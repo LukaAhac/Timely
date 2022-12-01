@@ -479,3 +479,6 @@ $RECYCLE.BIN/
 #Database dep
 TimelyApi/Data/reactivities.db-shm
 TimelyApi/Data/reactivities.db-wal
+
+#.vscode map
+.vscode/
