@@ -475,3 +475,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+#Database dep
+TimelyApi/Data/reactivities.db-shm
+TimelyApi/Data/reactivities.db-wal
