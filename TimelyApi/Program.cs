@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TimelyApi.Data;
+using MediatR;
+using TimelyApi.Application.TimeIntervals;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,9 @@ builder.Services.AddDbContext<DataContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+//Add mediator service
+builder.Services.AddMediatR(typeof(GetAll.Handler).Assembly);
 
 var app = builder.Build();
 
