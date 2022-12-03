@@ -3,5 +3,5 @@ export interface TimeInterval {
     projectName: string;
     timeStart: Date;
     timeEnd: Date | string;
-    duration: Date;
+    duration: Date | string;
 }

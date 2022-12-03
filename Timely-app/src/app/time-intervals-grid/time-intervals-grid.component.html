@@ -1,11 +1,28 @@
 <div *ngIf="intervals.length !== 0" class="grid-container">
-    <div class="grid-item">{{intervals[0].projectName}}</div>
-    <div class="grid-item">2</div>
-    <div class="grid-item">3</div>
-    <div class="grid-item">4</div>
-    <div class="grid-item">5</div>
-    <div class="grid-item">6</div>
-    <div class="grid-item">7</div>
-    <div class="grid-item">8</div>
-    <div class="grid-item">9</div>
-  </div>
+    <div class="grid-item-first-row">Project</div>
+    <div class="grid-item-first-row">Start</div>
+    <div class="grid-item-first-row">Stop</div>
+    <div class="grid-item-first-row">Duration</div>
+
+  <ng-template let-interval ngFor [ngForOf]="intervals">
+      <div class="grid-item"><p style="line-height:0%">{{interval.projectName}}</p></div>
+      <div class="grid-item">
+        <p style="margin:0">{{interval.timeStart.getDate()}}.{{interval.timeStart.getMonth()}}.{{interval.timeStart.getFullYear()}}
+        </p>
+        <p style="margin:0">{{interval.timeStart.getHours()}}:{{interval.timeStart.getMinutes()}}:{{interval.timeStart.getSeconds()}}
+        </p>
+      </div>
+      <div class="grid-item">
+        <div>{{interval.timeStart.getDate()}}.{{interval.timeStart.getMonth()}}.{{interval.timeStart.getFullYear()}}
+        </div>
+        <div>{{interval.timeStart.getHours()}}:{{interval.timeStart.getMinutes()}}:{{interval.timeStart.getSeconds()}}
+        </div>
+      </div>
+      <div class="grid-item">
+        <div>{{interval.timeStart.getDate()}}.{{interval.timeStart.getMonth()}}.{{interval.timeStart.getFullYear()}}
+        </div>
+        <div>{{interval.timeStart.getHours()}}:{{interval.timeStart.getMinutes()}}:{{interval.timeStart.getSeconds()}}
+        </div>
+      </div>
+    </ng-template>
+</div>
