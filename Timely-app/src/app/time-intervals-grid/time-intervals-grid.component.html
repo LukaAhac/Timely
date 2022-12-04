@@ -7,22 +7,13 @@
   <ng-template let-interval ngFor [ngForOf]="intervals">
       <div class="grid-item"><p style="line-height:0%">{{interval.projectName}}</p></div>
       <div class="grid-item">
-        <p style="margin:0">{{interval.timeStart.getDate()}}.{{interval.timeStart.getMonth()}}.{{interval.timeStart.getFullYear()}}
-        </p>
-        <p style="margin:0">{{interval.timeStart.getHours()}}:{{interval.timeStart.getMinutes()}}:{{interval.timeStart.getSeconds()}}
-        </p>
+        <app-date-time [date]="interval.timeStart"></app-date-time>
       </div>
       <div class="grid-item">
-        <div>{{interval.timeStart.getDate()}}.{{interval.timeStart.getMonth()}}.{{interval.timeStart.getFullYear()}}
-        </div>
-        <div>{{interval.timeStart.getHours()}}:{{interval.timeStart.getMinutes()}}:{{interval.timeStart.getSeconds()}}
-        </div>
+        <app-date-time [date]="interval.timeEnd"></app-date-time>
       </div>
       <div class="grid-item">
-        <div>{{interval.timeStart.getDate()}}.{{interval.timeStart.getMonth()}}.{{interval.timeStart.getFullYear()}}
-        </div>
-        <div>{{interval.timeStart.getHours()}}:{{interval.timeStart.getMinutes()}}:{{interval.timeStart.getSeconds()}}
-        </div>
+        <p style="line-height:0%">{{interval.duration}}</p>
       </div>
     </ng-template>
 </div>

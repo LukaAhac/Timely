@@ -1,0 +1,8 @@
+<ng-template *ngIf="date !== null; then thenBlock else elseBlock"></ng-template>
+<ng-template #thenBlock>
+    <div>{{date!.getDate()}}.{{date!.getMonth()+1}}.{{date!.getFullYear()}}
+    </div>
+    <div>{{date!.getHours()}}:{{date!.getMinutes()}}:{{date!.getSeconds()}}
+    </div>
+</ng-template>
+<ng-template #elseBlock>.....</ng-template>
