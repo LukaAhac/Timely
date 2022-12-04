@@ -3,10 +3,11 @@ div{
     background-color: blue;
 }
 
-label{
-    text-align: left;
-}
 
-.invaled-alert{
-    background-color: red;
+.centerForm{
+    position:absolute;
+    top:30%;
+    bottom:30%;
+    left:30%;
+    right:30%;
 }

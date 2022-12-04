@@ -9,10 +9,14 @@ import { FormControl } from '@angular/forms';
 export class NameFormComponent {
   projectNameControl = new FormControl('');
   @Output() projectNameEvent =  new EventEmitter<string>();
+  displayWarning: boolean = false;
 
     submitForm(){
-      this.projectNameControl.getRawValue();
-      console.log("Form subbmited!", this.projectNameControl.getRawValue());
-      this.projectNameEvent.emit(this.projectNameControl.getRawValue()!);
+      var projectName = this.projectNameControl.getRawValue();
+      if(projectName!.length === 0){
+        this.displayWarning = true;
+      } else {
+        this.projectNameEvent.emit(this.projectNameControl.getRawValue()!);
+      }
     }
 }
