@@ -1,19 +1,23 @@
 <div *ngIf="intervals.length !== 0" class="grid-container">
-    <div class="grid-item-first-row">Project</div>
-    <div class="grid-item-first-row">Start</div>
-    <div class="grid-item-first-row">Stop</div>
-    <div class="grid-item-first-row">Duration</div>
+  <div class="grid-item-first-row">Project</div>
+  <div class="grid-item-first-row">Start</div>
+  <div class="grid-item-first-row">Stop</div>
+  <div class="grid-item-first-row">Duration</div>
 
   <ng-template let-interval ngFor [ngForOf]="intervals">
-      <div class="grid-item"><p style="line-height:0%">{{interval.projectName}}</p></div>
-      <div class="grid-item">
-        <app-date-time [date]="interval.timeStart"></app-date-time>
+    <div class="grid-item">
+      <div class="center-vertically">{{interval.projectName}}</div>
+    </div>
+    <div class="grid-item">
+      <app-date-time class="center-vertically" [date]="interval.timeStart"></app-date-time>
+    </div>
+    <div class="grid-item">
+      <app-date-time class="center-vertically" [date]="interval.timeEnd"></app-date-time>
+    </div>
+    <div class="grid-item">
+      <div class="center-vertically">
+        {{interval.duration}}
       </div>
-      <div class="grid-item">
-        <app-date-time [date]="interval.timeEnd"></app-date-time>
-      </div>
-      <div class="grid-item">
-        <p style="line-height:0%">{{interval.duration}}</p>
-      </div>
-    </ng-template>
+    </div>
+  </ng-template>
 </div>

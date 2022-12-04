@@ -1,9 +1,8 @@
 <div>
   <h1>Timely</h1>
-
-<div class="center">
-  <button type="button" (click)="buttonClick()" [disabled]="buttonDisabled">{{buttonState}}</button>
-  <app-time-intervals-grid></app-time-intervals-grid>
-</div>
-<app-name-form *ngIf="displayForm" (projectNameEvent)="updateProjectName($event)"></app-name-form>
+  <div class="center">
+    <button (click)="buttonClick()" [disabled]="buttonDisabled">{{buttonState}}</button>
+    <app-time-intervals-grid></app-time-intervals-grid>
+  </div>
+  <app-name-form *ngIf="displayForm" (projectNameEvent)="formSubmited($event)" (exitButtonEvent)="formClosed()"></app-name-form>
 </div>

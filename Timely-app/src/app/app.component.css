@@ -4,8 +4,6 @@ h1 {
     font-size: 250%;
   }
 
-  
-  /* CSS */
   button {
     margin:auto;
     display:block;
@@ -23,7 +21,6 @@ h1 {
     width: 15%;
   }
   
-  
   button:hover {
     color: #fff;
     background-color: #1A1A1A;
@@ -40,7 +37,6 @@ h1 {
     -webkit-transform: translate(-50%, -50%); /* Safari and Chrome*/
     -o-transform: translate(-50%, -50%); /* Opera */
     transform: translate(-50%, -50%);
-  
     size: relative;
     width: 70%;
   }

@@ -7,6 +7,7 @@ import { TimeInterval } from '../models/timeInterval';
   templateUrl: './time-intervals-grid.component.html',
   styleUrls: ['./time-intervals-grid.component.css']
 })
+
 export class TimeIntervalsGridComponent {
 intervals : TimeInterval[] = [];
 
