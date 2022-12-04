@@ -3,7 +3,7 @@
 
 <div class="center">
   <button type="button" (click)="buttonClick()" [disabled]="buttonDisabled">{{buttonState}}</button>
-  <app-time-intervals-grid [intervals]="timeIntervals"></app-time-intervals-grid>
+  <app-time-intervals-grid></app-time-intervals-grid>
 </div>
 <app-name-form *ngIf="displayForm" (projectNameEvent)="updateProjectName($event)"></app-name-form>
 </div>

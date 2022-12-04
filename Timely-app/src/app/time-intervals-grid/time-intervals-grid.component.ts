@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { ManageIntervalsService } from '../manage-intervals.service';
 import { TimeInterval } from '../models/timeInterval';
 
 @Component({
@@ -7,5 +8,11 @@ import { TimeInterval } from '../models/timeInterval';
   styleUrls: ['./time-intervals-grid.component.css']
 })
 export class TimeIntervalsGridComponent {
-@Input() intervals : TimeInterval[] = [];
+intervals : TimeInterval[] = [];
+
+  constructor(private manageIntervalsService: ManageIntervalsService) {}
+
+  ngOnInit() : void {
+    this.intervals = this.manageIntervalsService.getIntervals();
+  }
 }

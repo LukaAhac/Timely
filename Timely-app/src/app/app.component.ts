@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ManageIntervalsService } from './manage-intervals.service';
 import { TimeInterval } from './models/timeInterval';
 
 @Component({
@@ -10,14 +11,15 @@ export class AppComponent {
   buttonState = 'Start'
   buttonDisabled = false;
   current: TimeInterval | null = null;
-  timeIntervals: TimeInterval[] = [];
   displayForm: boolean = false;
+
+  constructor(private manageIntervalsService: ManageIntervalsService) {}
 
   buttonClick() {
     if (this.buttonState === 'Start') {
       this.buttonState = 'Stop'
       this.current = { id: "testId", projectName: ".....", timeStart: new Date(), timeEnd: null, duration: "....." };
-      this.timeIntervals.unshift(this.current);
+      this.manageIntervalsService.addTimeInterval(this.current);
     } else {
       this.buttonState = 'Start'
       this.current!.timeEnd = new Date();
