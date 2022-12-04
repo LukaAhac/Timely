@@ -1,0 +1,12 @@
+div{
+    text-align: center;
+    background-color: blue;
+}
+
+label{
+    text-align: left;
+}
+
+.invaled-alert{
+    background-color: red;
+}

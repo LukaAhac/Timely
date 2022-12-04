@@ -1,0 +1,10 @@
+<div style="position:absolute;top:30%;bottom:30%;left:30%;right:30%">
+    <h1>Enter project name</h1>
+    <form (ngSubmit)="submitForm()">
+        <div>
+            <label>Project name</label><br>
+            <input [formControl]="projectNameControl">
+        </div>
+        <button class="buton" type="submit">Stop timer</button>
+    </form>
+</div>

@@ -1,6 +1,9 @@
-<h1>{{title}}</h1>
+<div>
+  <h1>Timely</h1>
 
 <div class="center">
-  <button type="button" (click)="buttonClick()" >{{buttonState}}</button>
+  <button type="button" (click)="buttonClick()" [disabled]="buttonDisabled">{{buttonState}}</button>
   <app-time-intervals-grid [intervals]="timeIntervals"></app-time-intervals-grid>
+</div>
+<app-name-form *ngIf="displayForm" (projectNameEvent)="updateProjectName($event)"></app-name-form>
 </div>
