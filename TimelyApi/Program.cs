@@ -21,6 +21,15 @@ builder.Services.AddDbContext<DataContext>(opt =>
 //Add mediator service
 builder.Services.AddMediatR(typeof(GetAll.Handler).Assembly);
 
+//Add CORS service
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", policy =>
+    {
+        policy.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+    });
+});
+
 var app = builder.Build();
 
 //Create or update DB if needed
@@ -46,6 +55,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 
