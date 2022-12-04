@@ -7,6 +7,7 @@ import { TimeIntervalsGridComponent } from './time-intervals-grid/time-intervals
 import { DateTimeComponent } from './date-time/date-time.component';
 import { NameFormComponent } from './name-form/name-form.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
