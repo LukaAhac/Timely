@@ -32,7 +32,7 @@ export class ManageIntervalsService {
 
   startNewInterval() {
     this.currentInterval = {
-      id: "testId",
+      id: this.newGuid(),
       projectName: ".....",
       timeStart: new Date(),
       timeEnd: null,
@@ -41,13 +41,21 @@ export class ManageIntervalsService {
     this.addTimeInterval(this.currentInterval);
   }
 
-  stopInterval(){
+  stopInterval(projectName: string){
     this.currentInterval!.timeEnd = new Date();
     this.currentInterval!.duration = this.calculateDurationString(this.currentInterval!);
-  }
-
-  updateIntervalProjectName(projectName: string){
     this.currentInterval!.projectName = projectName;
+
+    var timeZoneOffsetInMiliseconds = this.currentInterval!.timeStart.getTimezoneOffset() * 60000; 
+    var timeStart_localISOTime = (new Date(this.currentInterval!.timeStart.valueOf() - timeZoneOffsetInMiliseconds)).toISOString();
+    var timeEnd_localISOTime = (new Date(this.currentInterval!.timeEnd.valueOf() - timeZoneOffsetInMiliseconds)).toISOString();
+
+    this.http.post(this.url + "/timeIntervals",{
+      id: this.currentInterval!.id,
+      projectName: this.currentInterval!.projectName,
+      timeStart: timeStart_localISOTime,
+      timeEnd: timeEnd_localISOTime
+    }).subscribe();
   }
 
   private addTimeInterval(interval: TimeInterval) : void {
@@ -66,5 +74,13 @@ export class ManageIntervalsService {
     return (hours < 10 ? "0" + hours : hours) + ":" 
           + (minutes < 10 ? "0" + minutes : minutes) + ":"
           + (seconds < 10 ? "0" + seconds : seconds);
+  }
+
+  private newGuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0,
+        v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
   }
 }

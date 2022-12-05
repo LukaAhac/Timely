@@ -26,8 +26,7 @@ export class AppComponent {
 
   formSubmited(projectName : string){
     this.buttonState = 'Start'
-    this.manageIntervalsService.stopInterval();
-    this.manageIntervalsService.updateIntervalProjectName(projectName);
+    this.manageIntervalsService.stopInterval(projectName);
     this.formClosed();
   }
 
