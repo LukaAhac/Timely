@@ -1,23 +1,47 @@
-<div *ngIf="intervals.length !== 0" class="grid-container">
-  <div class="grid-item-first-row">Project</div>
-  <div class="grid-item-first-row">Start</div>
-  <div class="grid-item-first-row">Stop</div>
-  <div class="grid-item-first-row">Duration</div>
+<div *ngIf="intervals.length !== 0">
+  <div class="grid-container">
+    <div class="grid-item-first-row">Project</div>
+    <div class="grid-item-first-row">Start</div>
+    <div class="grid-item-first-row">Stop</div>
+    <div class="grid-item-first-row">Duration</div>
 
-  <ng-template let-interval ngFor [ngForOf]="intervals">
-    <div class="grid-item">
-      <div class="center-vertically">{{interval.projectName}}</div>
-    </div>
-    <div class="grid-item">
-      <app-date-time class="center-vertically" [date]="interval.timeStart"></app-date-time>
-    </div>
-    <div class="grid-item">
-      <app-date-time class="center-vertically" [date]="interval.timeEnd"></app-date-time>
-    </div>
-    <div class="grid-item">
-      <div class="center-vertically">
-        {{interval.duration}}
+    <ng-template [ngIf]="currentInterval !== null">
+      <div class="grid-item-current-interval">
+        <div class="center-vertically">{{currentInterval.projectName}}</div>
       </div>
-    </div>
-  </ng-template>
+      <div class="grid-item-current-interval">
+        <app-date-time class="center-vertically" [date]="currentInterval.timeStart"></app-date-time>
+      </div>
+      <div class="grid-item-current-interval">
+        <app-date-time class="center-vertically" [date]="currentInterval.timeEnd"></app-date-time>
+      </div>
+      <div class="grid-item-current-interval">
+        <div class="center-vertically">
+          {{currentInterval.duration}}
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template let-interval ngFor [ngForOf]="intervals">
+      <div class="grid-item">
+        <div class="center-vertically">{{interval.projectName}}</div>
+      </div>
+      <div class="grid-item">
+        <app-date-time class="center-vertically" [date]="interval.timeStart"></app-date-time>
+      </div>
+      <div class="grid-item">
+        <app-date-time class="center-vertically" [date]="interval.timeEnd"></app-date-time>
+      </div>
+      <div class="grid-item">
+        <div class="center-vertically">
+          {{interval.duration}}
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <div class="row">
+    <button (click)="previousButtonClicked()">Previous</button>
+    <p>Page: {{pageNumber}}</p>
+    <button (click)="nextButtonClicked()">Next</button>
+  </div>
 </div>

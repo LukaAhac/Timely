@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TimelyApi.Application.Core;
-using TimelyApi.Data;
+using TimelyApi.Extensions;
+using TimelyApi.Models;
 
 namespace TimelyApi.Controllers
 {
@@ -21,6 +22,21 @@ namespace TimelyApi.Controllers
                 return NotFound();
             }
             if (result.IsSuccess && result.Value != null){
+                return Ok(result.Value);
+            }
+            if (result.IsSuccess && result.Value == null){
+                return NotFound();
+            }
+            return BadRequest(result.Error);
+        }
+
+          protected ActionResult HandlePagedResult(Result<PagedList<TimeInterval>> result)
+        {
+            if (result == null){
+                return NotFound();
+            }
+            if (result.IsSuccess && result.Value != null){
+                Response.AddPaginationHeader(result.Value.CurrentPage, result.Value.PageSize, result.Value.TotalCount, result.Value.TotalPages);
                 return Ok(result.Value);
             }
             if (result.IsSuccess && result.Value == null){

@@ -4,7 +4,7 @@ h1 {
     font-size: 250%;
   }
 
-  button {
+  .startButton {
     margin:auto;
     display:block;
     background-color: transparent;
@@ -21,7 +21,7 @@ h1 {
     width: 15%;
   }
   
-  button:hover {
+  .startButton:hover {
     color: #fff;
     background-color: #1A1A1A;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;

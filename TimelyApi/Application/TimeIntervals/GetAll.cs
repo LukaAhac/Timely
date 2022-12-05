@@ -12,9 +12,12 @@ namespace TimelyApi.Application.TimeIntervals
 {
     public class GetAll
     {
-        public class Query : IRequest<Result<List<TimeInterval>>> {}
+        public class Query : IRequest<Result<PagedList<TimeInterval>>>
+        {
+            public PagingParams Params { get; set; }
+        }
 
-        public class Handler : IRequestHandler<Query, Result<List<TimeInterval>>>
+        public class Handler : IRequestHandler<Query, Result<PagedList<TimeInterval>>>
         {
             private readonly DataContext _context;
             public Handler(DataContext context)
@@ -22,9 +25,12 @@ namespace TimelyApi.Application.TimeIntervals
             _context = context;
             }
 
-            public async Task<Result<List<TimeInterval>>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Result<PagedList<TimeInterval>>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return Result<List<TimeInterval>>.Success(await _context.TimeIntervals.ToListAsync());
+                var query = _context.TimeIntervals.OrderByDescending(x => x.TimeStart).AsQueryable();
+
+                return Result<PagedList<TimeInterval>>.Success(await PagedList<TimeInterval>.CreateAsync(query,
+                    request.Params.PageNumber, request.Params.PageSize));
             }
         }
     }

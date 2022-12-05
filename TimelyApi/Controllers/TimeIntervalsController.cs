@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TimelyApi.Application.Core;
 using TimelyApi.Application.TimeIntervals;
 using TimelyApi.Models;
 
@@ -12,9 +13,9 @@ namespace TimelyApi.Controllers
     public class TimeIntervalsController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> GetTimeIntervals()
+        public async Task<ActionResult> GetTimeIntervals([FromQuery]PagingParams param)
         {
-            return HandleResult(await _mediator.Send(new GetAll.Query()));
+            return HandlePagedResult(await _mediator.Send(new GetAll.Query{Params = param}));
         }
 
         [HttpGet("{id}")]
